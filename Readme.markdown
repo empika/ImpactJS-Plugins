@@ -51,7 +51,12 @@ Plugins for the Impact JS library
 
 		MyGame = ig.Game.extend({
 			init: function() {
-				ig.input.bindTouch( '#button', 'doSomthing' );
+				// ig.input.bindTouch( element_name, mousedown_func, mouseup_func, click_func  );
+				// element_name, string:		name of an element, required. eg '#button'
+				// mousedown_func, string:	name of a function to call on mouse down, defaults to false
+				// mouseup_func, string:		name of a function to call on mouse up, defaults to false
+				// click_func, string:			name of a function to call on mouse click, defaults to false
+				ig.input.bindTouch( '#buttonSoldier', 'btndown', 'btnup', 'btnclick' );
 			},
 			update: function() {
 				this.parent();
@@ -77,8 +82,14 @@ Plugins for the Impact JS library
 		        this.parent( x, y, settings );
 		    },
 		    update: function(){
-		      if( ig.input.pressed('doSomthing')){
-		       console.log("w00t, we did something"); 
+		      if( ig.input.pressed('btndown')){
+		       console.log("button log down"); 
+		      }
+		      if( ig.input.pressed('btnup')){
+		       console.log("button log up"); 
+		      }
+		      if( ig.input.pressed('btnclick')){
+		       console.log("button log click"); 
 		      }
 		    }
 		  });
