@@ -2,6 +2,9 @@
 
 Plugins for the Impact JS library
 
+* Debug Display
+* HTML Button
+
 ## Debug Display
 		ig.module( 
 			'game.main' 

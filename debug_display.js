@@ -43,7 +43,7 @@ ig.module(
   DebugDisplay = ig.Class.extend({
 
   	framerateNow: (new Date()).getTime(),
-  	frames: [0,0,0,0,0,0,0,0,0,0,0],
+  	frames: [0],
   	average: [0],
   	frameCounter: 0,
   	info: [],
@@ -74,7 +74,7 @@ ig.module(
           this.avg_fps = this.calculateAverage(fps, interval_count);
         }
         this.font.draw( this.avg_fps + 'fps over time', 2, offset + 2 );
-        offset = offset + offset + 4;
+        offset = offset + offset;
       }
       for(var x = 0; x < info.length; x = x + 1){
         this.font.draw( info[x], 2, offset + (this.font.height * x) + 2);
@@ -84,35 +84,30 @@ ig.module(
     calculateFrameRate: function(){
       var now = (new Date()).getTime();
       var delta = now - this.framerateNow;
-      var avg = 0;
+      var avg = this.frames.sum();
       var av_length = this.frames.length;
-      for(var x = 0; x < av_length; x = x+1){
-        avg = avg + this.frames[x];
+      if(av_length > 11){
+        this.frames.shift();
       }
-      if(this.frameCounter < av_length){
-        this.frameCounter = this.frameCounter + 1;
-      }
-      else{
-        this.frameCounter = 0;
-      }
-      this.frames[this.frameCounter] = 1000/delta;
-      this.framerateNow = (new Date()).getTime();
-      this.frameCounter = this.frameCounter + 1;
+      this.frames.push(1000/delta);
+      this.framerateNow = now;
       return Math.floor(avg / av_length);
     },
     
     calculateAverage: function(current, interval_count){
-      var avg = 0;
       var av_length = this.average.length;
       if(av_length > interval_count){
         this.average.shift();
       }
       this.average.push(current);
-      for(var x = 0; x < av_length; x = x+1){
-        avg = avg + this.average[x];
-      }
-      return Math.floor(avg / av_length);
+      return Math.floor(this.average.sum() / av_length);
     }
+    
     
   });
 });
+
+Array.prototype.sum = function(){
+	for(var i=0,sum=0;i<this.length;sum+=this[i++]);
+	return sum;
+}
