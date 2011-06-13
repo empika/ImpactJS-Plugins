@@ -21,7 +21,7 @@ ig.module(
     
     draw: function(info, display_fps, display_average, average_time, interval_count){
       var info = typeof(info) != 'undefined' ? info : [];
-      var display_fps = typeof(display_fps) != 'undefined' ? display_fps : false;
+      var display_fps = typeof(display_fps) != 'undefined' ? display_fps : true;
       var display_average = typeof(display_average) != 'undefined' ? display_average : false;
       var average_time = typeof(average_time) != 'undefined' ? average_time : 10000; // 10 seconds
       var interval_count = typeof(interval_count) != 'undefined' ? interval_count : 500; // 10 seconds
