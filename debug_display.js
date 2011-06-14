@@ -43,8 +43,8 @@ ig.module(
   DebugDisplay = ig.Class.extend({
 
   	framerateNow: (new Date()).getTime(),
-  	frames: [0],
-  	average: [0],
+  	frames: [],
+  	average: [],
   	frameCounter: 0,
   	info: [],
   	avg_fps: 0,
@@ -65,15 +65,17 @@ ig.module(
       var fps = 0;
       if(display_fps){
         fps = this.calculateFrameRate();
-        this.font.draw( fps + 'fps', 2, 2 );
+        this.font.draw( 'FPS: ' + fps, 2, 2 );
         offset = this.font.height;
       }
       
       if(display_fps && display_average){
+        var min = this.average.min() !== Infinity ?  this.average.min() : 0;
+        var max = this.average.max() !== Infinity ?  this.average.max() : 0;
         if((new Date()).getTime() % average_time < 100){
           this.avg_fps = this.calculateAverage(fps, interval_count);
         }
-        this.font.draw( this.avg_fps + 'fps over time', 2, offset + 2 );
+        this.font.draw('Avg FPS: ' + this.avg_fps + ' Min: ' + min + ' Max: ' + max, 2, offset + 2 );
         offset = offset + offset;
       }
       for(var x = 0; x < info.length; x = x + 1){
@@ -107,7 +109,14 @@ ig.module(
   });
 });
 
+// From http://snippets.dzone.com/posts/show/769
 Array.prototype.sum = function(){
 	for(var i=0,sum=0;i<this.length;sum+=this[i++]);
 	return sum;
+}
+Array.prototype.max = function(){
+	return Math.max.apply({},this)
+}
+Array.prototype.min = function(){
+	return Math.min.apply({},this)
 }

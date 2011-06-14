@@ -51,7 +51,6 @@ ig.module(
 
   		var that = this;
       if('ontouchstart' in element && 'ontouchend' in element){
-        console.log("binding touch");
     		element.addEventListener('touchstart', function(ev) {
     			that.touchStart( ev, action_down );
     		}, false);
