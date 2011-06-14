@@ -59,7 +59,7 @@ Plugins for the Impact JS library
 				// mousedown_func, string:	name of a function to call on mouse down, defaults to false
 				// mouseup_func, string:		name of a function to call on mouse up, defaults to false
 				// click_func, string:			name of a function to call on mouse click, defaults to false
-				ig.input.bindTouch( '#buttonSoldier', 'btndown', 'btnup', 'btnclick' );
+				ig.input.bindTouch( '#button', 'btndown', 'btnup', 'btnclick' );
 			},
 			update: function() {
 				this.parent();
@@ -111,7 +111,7 @@ Plugins for the Impact JS library
 				-webkit-touch-callout: none; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: none;
 				-moz-background-size: 256px; background-size: 256px; image-rendering:-moz-crisp-edges; -ms-interpolation-mode:nearest-neighbor;
 			}
-			#buttonSoldier { left: 0; background-position: 0, 0; }
+			#button { left: 0; background-position: 0, 0; }
 		</style>
 
 		<script type="text/javascript" src="lib/impact/impact.js"></script>
