@@ -14,8 +14,8 @@ ig.module(
 
       var entities = this.entities;
       var under_mouse = [];
-      for(var x = entities.length; x = x - 1;){
-        var entity = entities[x - 1]; // minus 1
+      for(var x = 0; x < entities.length; x = x+1){
+        var entity = entities[x];
         var pos_x = entity.pos.x;
         var pos_y = entity.pos.y;
         if( pos_x <= mouse_x && mouse_x <= pos_x + entity.size.x &&
