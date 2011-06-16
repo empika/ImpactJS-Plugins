@@ -8,7 +8,7 @@ ig.module(
   ig.Game.inject({
     
     // Return an array of entities that are under the mouse
-    entitesUnderMouse: function(){
+    entitiesUnderMouse: function(){
       var mouse_x = ig.input.mouse.x;
       var mouse_y = ig.input.mouse.y;
 

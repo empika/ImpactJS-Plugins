@@ -47,12 +47,8 @@ ig.module(
   	is_clicked: false,
   	
     isMouseInside: function (){
-      var pos_x = this.pos.x;
-      var pos_y = this.pos.y;
-      var mouse_x = ig.input.mouse.x;
-      var mouse_y = ig.input.mouse.y;
-      if( pos_x <= mouse_x && mouse_x <= pos_x + this.size.x &&
-          pos_y <= mouse_y && mouse_y <= pos_y + this.size.y ){
+      var entities = ig.game.entitiesUnderMouse();
+      if(this == entities[entities.length -1]){
         return true;
       }
       return false;
