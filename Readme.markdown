@@ -98,6 +98,48 @@ Plugins for the Impact JS library
 		  });
 		});
 		
+## Sprite Tweening
+### game.entities.player.js
+        ig.module('game.entities.player')
+        .requires(
+          'impact.entity'
+        )
+        .defines(function () {
+          EntityPlayer = ig.Entity.extend({
+            init: function(x,y,settings){
+                this.parent(x,y,settings);
+                // actions object
+                // actions, array:  An array of action objects
+                // post_anim, string: The animation to revert to after the animation has finished
+                
+                // action objects
+                // x, integer:  Translation along the x axis
+                // y, integer:  Translation along the y axis
+                // duration, float: The time that the tween will take
+                // anim, string:    The name of the animation to use during the tween
+                // easing, Tween object: The ease factore applied to the tween. See the source for a full list.
+                // Many thanks to https://github.com/nefD and https://github.com/xdissent for these
+                // callback, function: a function to call once the tween action has completed
+                // callback_args, array: an array of arguments to pass in to the callback function
+                actions = {actions: [
+                  { x: 15, y: 10, duration: 2, anim: 'walk', easing: ig.Tween.Easing.Cubic.EaseIn },
+                  { x: 0, 
+                    y: 0,
+                    duration: 5,
+                    anim: 'idle',
+                    callback: function(){
+                      console.log(arguments[0], arguments[1]);
+                    }, 
+                    callback_args: ["argument 1", "argument 2"],
+                  },
+                  { x: -15, y: -10, duration: 2, anim: 'idle', easing: ig.Tween.Easing.Cubic.EaseOut }
+                ], post_anim: 'idle'};
+                this.initialize_animations(actions);
+                this.anim_start();
+            }
+          });
+        });
+		
 ### index.html
 	<!DOCTYPE html>
 	<html>
@@ -122,6 +164,8 @@ Plugins for the Impact JS library
 		<div class="button" id="button"></div>
 	</body>
 	</html>
+	
+
 	
 Copyright (C) 2011 by Edward Parris.
 
