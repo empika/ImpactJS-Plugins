@@ -134,7 +134,11 @@ Plugins for the Impact JS library
                   },
                   { x: -15, y: -10, duration: 2, anim: 'idle', easing: ig.Tween.Easing.Cubic.EaseOut }
                 ], post_anim: 'idle'};
+                
+                // Add the actions to the entity
                 this.initialize_animations(actions);
+                
+                // Kick off the Tweening
                 this.anim_start();
             }
           });
