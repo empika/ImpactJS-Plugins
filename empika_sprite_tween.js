@@ -32,7 +32,7 @@ Changelog
 0.1: Initial release.
 */
 
-ig.module('plugins.empika_sprite_tween')
+ig.module('plugins.empika.empika_sprite_tween')
 .requires(
   'impact.entity',
   'impact.game'
