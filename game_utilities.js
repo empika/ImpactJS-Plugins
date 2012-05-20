@@ -1,5 +1,19 @@
+/*
+Plugin Name: Game utilities
+Plugin URI: https://github.com/empika/ImpactJS-Plugins
+Description: Some general helper methods
+Version: 0.2
+Revision Date: 20-05-2012
+Requires: ImpactJS
+Author: Edward Parris
+Author URI: http://www.nixonmcinnes.co.uk/people/edward/
+Changelog
+---------
+0.2: Namespace the plugin.
+0.1: Initial release.
+*/
 ig.module(
-  'plugins.empika_game_utilities'
+  'plugins.empika.game_utilities'
 )
 .requires(
   'impact.game'

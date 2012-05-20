@@ -4,6 +4,7 @@ Plugins for the Impact JS library
 
 * Debug Display
 * HTML Button
+* Sprite tween
 
 ## Debug Display
 		ig.module( 
@@ -170,7 +171,8 @@ Plugins for the Impact JS library
 	</html>
 	
 
-	
+# License for all plugins in this repository:
+
 Copyright (C) 2011 by Edward Parris.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
