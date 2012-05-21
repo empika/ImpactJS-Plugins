@@ -6,6 +6,8 @@ Plugins for the Impact JS library
 * HTML Button
 * Sprite tween
 
+To use, pull down the repository and place the files in a folder called 'empika' inside your plugins directory. e.g. /lib/plugins/empika/*.*
+
 ## Debug Display
 		ig.module( 
 			'game.main' 
@@ -13,7 +15,7 @@ Plugins for the Impact JS library
 		.requires(
 			'impact.game',
 			'impact.font',
-			'plugins.debug_display' // require the debug display plugin
+			'plugins.empika.debug_display' // require the debug display plugin
 		)
 		.defines(function(){
 			MyGame = ig.Game.extend({
@@ -48,7 +50,7 @@ Plugins for the Impact JS library
 		)
 		.requires(
 			'impact.game',
-			'plugins.html_button',
+			'plugins.empika.html_button',
 			'game.entities.button'
 		)
 		.defines(function(){
@@ -99,11 +101,12 @@ Plugins for the Impact JS library
 		  });
 		});
 		
-## Sprite Tweening
+## Entity Tweening
 ### game.entities.player.js
         ig.module('game.entities.player')
         .requires(
-          'impact.entity'
+          'impact.entity',
+          'plugins.empika.entity_tween'
         )
         .defines(function () {
           EntityPlayer = ig.Entity.extend({
@@ -169,26 +172,3 @@ Plugins for the Impact JS library
 		<div class="button" id="button"></div>
 	</body>
 	</html>
-	
-
-# License for all plugins in this repository:
-
-Copyright (C) 2011 by Edward Parris.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
