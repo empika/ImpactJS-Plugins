@@ -2,8 +2,8 @@
 Plugin Name: Debug Display
 Plugin URI: https://github.com/empika/ImpactJS-Plugins
 Description: Show FPS as well as arbitrary debug information in an ImpactJS game
-Version: 0.3
-Revision Date: 20-05-2012
+Version: 0.4
+Revision Date: 28-03-2013
 Requires: ImpactJS
 Author: Edward Parris
 Author URI: http://www.nixonmcinnes.co.uk/people/edward/
