@@ -9,6 +9,7 @@ Author: Edward Parris
 Author URI: http://www.nixonmcinnes.co.uk/people/edward/
 Changelog
 ---------
+0.4: Can set position where font will be drawn to.
 0.3: Namespace the plugin.
 0.2: Add average FPS over longer time periods.
 0.1: Initial release.
@@ -23,6 +24,7 @@ ig.module(
 .defines(function(){
   DebugDisplay = ig.Class.extend({
 
+  	pos: { x: 2, y: 2 },
   	framerateNow: (new Date()).getTime(),
   	frames: [],
   	average: [],
@@ -46,7 +48,7 @@ ig.module(
       var fps = 0;
       if(display_fps){
         fps = this.calculateFrameRate();
-        this.font.draw( 'FPS: ' + fps, 2, 2 );
+        this.font.draw( 'FPS: ' + fps, this.pos.x, this.pos.y );
         offset = this.font.height;
       }
 
@@ -56,11 +58,11 @@ ig.module(
         if((new Date()).getTime() % average_time < 100){
           this.avg_fps = this.calculateAverage(fps, interval_count);
         }
-        this.font.draw('Avg FPS: ' + this.avg_fps + ' Min: ' + min + ' Max: ' + max, 2, offset + 2 );
+        this.font.draw('Avg FPS: ' + this.avg_fps + ' Min: ' + min + ' Max: ' + max, this.pos.x, offset + this.pos.y);
         offset = offset + offset;
       }
       for(var x = 0; x < info.length; x = x + 1){
-        this.font.draw( info[x], 2, offset + (this.font.height * x) + 2);
+        this.font.draw( info[x], this.pos.x, offset + (this.font.height * x) + this.pos.y);
       }
     },
 
