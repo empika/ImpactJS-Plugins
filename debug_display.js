@@ -14,8 +14,8 @@ Changelog
 0.1: Initial release.
 */
 
-ig.module( 
-	'plugins.empika.debug_display' 
+ig.module(
+	'plugins.empika.debug_display'
 )
 .requires(
 	'impact.game'
@@ -29,19 +29,19 @@ ig.module(
   	frameCounter: 0,
   	info: [],
   	avg_fps: 0,
-  	
+
     init: function(font)
     {
     	this.font = font;
     },
-    
+
     draw: function(info, display_fps, display_average, average_time, interval_count){
       var info = typeof(info) != 'undefined' ? info : [];
       var display_fps = typeof(display_fps) != 'undefined' ? display_fps : true;
       var display_average = typeof(display_average) != 'undefined' ? display_average : false;
       var average_time = typeof(average_time) != 'undefined' ? average_time : 10000; // 10 seconds
       var interval_count = typeof(interval_count) != 'undefined' ? interval_count : 500; // 10 seconds
-      
+
       var offset = 0;
       var fps = 0;
       if(display_fps){
@@ -49,7 +49,7 @@ ig.module(
         this.font.draw( 'FPS: ' + fps, 2, 2 );
         offset = this.font.height;
       }
-      
+
       if(display_fps && display_average){
         var min = this.average.min() !== Infinity ?  this.average.min() : 0;
         var max = this.average.max() !== Infinity ?  this.average.max() : 0;
@@ -63,7 +63,7 @@ ig.module(
         this.font.draw( info[x], 2, offset + (this.font.height * x) + 2);
       }
     },
-    
+
     calculateFrameRate: function(){
       var now = (new Date()).getTime();
       var delta = now - this.framerateNow;
@@ -76,7 +76,7 @@ ig.module(
       this.framerateNow = now;
       return Math.floor(avg / av_length);
     },
-    
+
     calculateAverage: function(current, interval_count){
       var av_length = this.average.length;
       if(av_length > interval_count){
@@ -85,8 +85,8 @@ ig.module(
       this.average.push(current);
       return Math.floor(this.average.sum() / av_length);
     }
-    
-    
+
+
   });
 });
 
